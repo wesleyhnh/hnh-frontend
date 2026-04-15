@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Support – HereNOW Help')
-@section('description', 'We're here to help. Any time. Any place. No waiting days or weeks for help.')
+@section('description', "We're here to help. Any time. Any place. No waiting days or weeks for help.")
 
 @section('content')
 <section class="page-hero" style="background:linear-gradient(135deg,#4a8daa 0%,#87bcc6 50%,#3e97b5 100%),url('{{ asset('images/banner-1.jpg') }}') center/cover no-repeat fixed;min-height:45vh;display:flex;align-items:center;padding-top:90px;padding-bottom:60px;">
