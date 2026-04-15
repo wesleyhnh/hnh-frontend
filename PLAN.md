@@ -10,7 +10,6 @@ This document captures the full context of the `hnh-frontend` Laravel project so
 
 ### Project
 - **Repo:** https://github.com/wesleyhnh/hnh-frontend
-- **Local path:** `~/Desktop/hnh-frontend`
 - **Stack:** Laravel (PHP), Blade templates, custom CSS
 - **Local dev:** `php artisan serve` → http://localhost:8000
 
