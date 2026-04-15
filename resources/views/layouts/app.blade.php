@@ -49,43 +49,44 @@
                 <ul class="navbar-nav ml-auto align-items-md-center">
 
                     <li class="nav-item">
-                        <a class="nav-link schedule-demo" href="#Contact">Schedule Demo</a>
+                        <a class="nav-link schedule-demo" href="{{ route('home') }}#Contact">Schedule Demo</a>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Who We Serve</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="https://herenowhelp.com/veterans/">Veterans</a>
-                            <a class="dropdown-item" href="https://herenowhelp.com/students/">Students</a>
-                            <a class="dropdown-item" href="https://herenowhelp.com/employee/">Employees</a>
-                            <a class="dropdown-item" href="https://herenowhelp.com/rehab/">Rehab Centers</a>
-                            <a class="dropdown-item" href="https://herenowhelp.com/government/">Government</a>
+                            <a class="dropdown-item" href="{{ route('veterans') }}">Veterans</a>
+                            <a class="dropdown-item" href="{{ route('students') }}">Students</a>
+                            <a class="dropdown-item" href="{{ route('employees') }}">Employees</a>
+                            <a class="dropdown-item" href="{{ route('rehab') }}">Rehab Centers</a>
+                            <a class="dropdown-item" href="{{ route('government') }}">Government</a>
                         </div>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="https://herenowhelp.com/peernow/">PeerNOW Academy</a>
+                        <a class="nav-link" href="{{ route('peernow') }}">PeerNOW Academy</a>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">About</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="https://herenowhelp.com/about-2/our-story/">Our Story</a>
-                            <a class="dropdown-item" href="https://herenowhelp.com/about-2/our-vision/">Our Vision</a>
-                            <a class="dropdown-item" href="https://herenowhelp.com/our-team/">Our Team</a>
-                            <a class="dropdown-item" href="#Contact">Contact</a>
+                            <a class="dropdown-item" href="{{ route('about.story') }}">Our Story</a>
+                            <a class="dropdown-item" href="{{ route('about.vision') }}">Our Vision</a>
+                            <a class="dropdown-item" href="{{ route('team') }}">Our Team</a>
+                            <a class="dropdown-item" href="{{ route('home') }}#Contact">Contact</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="https://herenowhelp.com/mental-health-news/">Mental Health News</a>
-                            <a class="dropdown-item" href="https://herenowhelp.com/peer-counseling/">Peer Counseling</a>
-                            <a class="dropdown-item" href="https://herenowhelp.com/helpful-links/">Helpful Links</a>
-                            <a class="dropdown-item" href="https://herenowhelp.com/support/">Support</a>
+                            <a class="dropdown-item" href="{{ route('news') }}">Mental Health News</a>
+                            <a class="dropdown-item" href="{{ route('peer-counseling') }}">Peer Counseling</a>
+                            <a class="dropdown-item" href="{{ route('helpful-links') }}">Helpful Links</a>
+                            <a class="dropdown-item" href="{{ route('support') }}">Support</a>
                         </div>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Customer Portal</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="https://production.herenowhelp.com/login">Login</a>
+                            {{-- Production login stays on the live portal --}}
+                            <a class="dropdown-item" href="https://production.herenowhelp.com/login" target="_blank" rel="noopener">Login</a>
                         </div>
                     </li>
 
@@ -103,7 +104,19 @@
 <!-- ── FOOTER ──────────────────────────────────────────────────────────── -->
 <footer id="footer">
     <div class="container">
-        <p class="footer-copy">&copy; 2024 HereNOW Help, Inc. All Rights Reserved</p>
+        <div class="d-flex flex-wrap align-items-center justify-content-center gap-3" style="gap:1.5rem;">
+            <p class="footer-copy mb-0">&copy; 2024 HereNOW Help, Inc. All Rights Reserved</p>
+            <div class="footer-links" style="display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;">
+                <a href="{{ route('veterans') }}"    class="footer-link">Veterans</a>
+                <a href="{{ route('students') }}"    class="footer-link">Students</a>
+                <a href="{{ route('employees') }}"   class="footer-link">Employees</a>
+                <a href="{{ route('rehab') }}"       class="footer-link">Healthcare</a>
+                <a href="{{ route('peernow') }}"     class="footer-link">PeerNOW</a>
+                <a href="{{ route('about.story') }}" class="footer-link">About</a>
+                <a href="{{ route('support') }}"     class="footer-link">Support</a>
+                <a href="{{ route('home') }}#Contact" class="footer-link">Contact</a>
+            </div>
+        </div>
     </div>
 </footer>
 
@@ -113,37 +126,28 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 
 <script>
-// Navbar scroll behaviour
 (function () {
     var nav = document.getElementById('main-nav');
-    function update() {
-        if (window.scrollY > 55) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    }
+    function update() { nav.classList.toggle('scrolled', window.scrollY > 55); }
     window.addEventListener('scroll', update, { passive: true });
     update();
 })();
 
-// Smooth-scroll all #anchor links
-document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+document.querySelectorAll('a[href*="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
-        var id = this.getAttribute('href').replace('#', '');
+        var href = this.getAttribute('href');
+        var hashPos = href.lastIndexOf('#');
+        if (hashPos === -1) return;
+        var id = href.slice(hashPos + 1);
+        if (!id) return;
+        // Only smooth-scroll if we're already on the page that has the anchor
         var el = document.getElementById(id);
-        if (el) {
-            e.preventDefault();
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
 });
 
-// Mark select as filled when changed
 document.querySelectorAll('select.form-control').forEach(function (s) {
-    s.addEventListener('change', function () {
-        this.classList.toggle('filled', this.value !== '');
-    });
+    s.addEventListener('change', function () { this.classList.toggle('filled', this.value !== ''); });
 });
 </script>
 

@@ -91,12 +91,12 @@
 
             @php
             $services = [
-                ['icon'=>'icon-healthcare.png','title'=>'HEALTHCARE',      'href'=>'/rehab/',    'body'=>'Tools for intake, assessments, treatment plans and outcome measurements. Stay engaged after discharge, build community, reduce claims and increase referrals.'],
-                ['icon'=>'icon-veterans.png',  'title'=>'VETERANS',        'href'=>'/veterans/', 'body'=>'Connect with care teams, VAMCs &amp; VSOs. Tools to assess and self-manage PTSD, anxiety, improve sleep and suicide prevention. Chat rooms for peer community support.'],
-                ['icon'=>'icon-students.png',  'title'=>'STUDENTS',        'href'=>'/government/','body'=>'K-12, Colleges and Universities. Learn to manage your own mental wellbeing while also connecting with peers and professionals before, during and after a crisis.'],
-                ['icon'=>'icon-employers.png', 'title'=>'EMPLOYERS',       'href'=>'/employee/', 'body'=>'Engage and empower employees to understand, track and improve their mental wellbeing. 86% report improvement in Happiness and Productivity.'],
-                ['icon'=>'icon-peer.png',      'title'=>'PEER SUPPORT',    'href'=>'/peernow/',  'body'=>'Become a Peer Support Specialist via our PeerNOW Academy Certification. Create Jobs. Expand Resources.'],
-                ['icon'=>'icon-admin.png',     'title'=>'ADMIN DASHBOARD', 'href'=>'/login/',    'body'=>'Explore, analyze and export all user data. Including integrations to Salesforce, EMRs &amp; more. No third party sharing. HIPAA, SOC-2, and ISO-27001 compliant.'],
+                ['icon'=>'icon-healthcare.png','title'=>'HEALTHCARE',      'route'=>'rehab',     'body'=>'Tools for intake, assessments, treatment plans and outcome measurements. Stay engaged after discharge, build community, reduce claims and increase referrals.'],
+                ['icon'=>'icon-veterans.png',  'title'=>'VETERANS',        'route'=>'veterans',  'body'=>'Connect with care teams, VAMCs &amp; VSOs. Tools to assess and self-manage PTSD, anxiety, improve sleep and suicide prevention. Chat rooms for peer community support.'],
+                ['icon'=>'icon-students.png',  'title'=>'STUDENTS',        'route'=>'students',  'body'=>'K-12, Colleges and Universities. Learn to manage your own mental wellbeing while also connecting with peers and professionals before, during and after a crisis.'],
+                ['icon'=>'icon-employers.png', 'title'=>'EMPLOYERS',       'route'=>'employees', 'body'=>'Engage and empower employees to understand, track and improve their mental wellbeing. 86% report improvement in Happiness and Productivity.'],
+                ['icon'=>'icon-peer.png',      'title'=>'PEER SUPPORT',    'route'=>'peernow',   'body'=>'Become a Peer Support Specialist via our PeerNOW Academy Certification. Create Jobs. Expand Resources.'],
+                ['icon'=>'icon-admin.png',     'title'=>'ADMIN DASHBOARD', 'route'=>'support',   'body'=>'Explore, analyze and export all user data. Including integrations to Salesforce, EMRs &amp; more. No third party sharing. HIPAA, SOC-2, and ISO-27001 compliant.'],
             ];
             @endphp
 
@@ -109,7 +109,7 @@
                     <div class="svc-body">
                         <h5>{{ $svc['title'] }}</h5>
                         <p>{!! $svc['body'] !!}<br>
-                        <a class="learn-more" href="https://herenowhelp.com{{ $svc['href'] }}">LEARN MORE</a></p>
+                        <a class="learn-more" href="{{ route($svc['route']) }}">LEARN MORE</a></p>
                     </div>
                 </div>
             </div>

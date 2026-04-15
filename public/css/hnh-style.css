@@ -494,3 +494,13 @@ img { max-width: 100%; height: auto; display: inline-block; }
   .svc-card { flex-direction: column; align-items: center; text-align: center; }
   .feat-item { flex-direction: column; align-items: flex-start; }
 }
+
+/* ── Footer links ────────────────────────────────────────────────────── */
+.footer-link {
+  color: #888;
+  font-family: 'Nunito', 'Open Sans', sans-serif;
+  font-size: .85rem;
+  font-weight: 600;
+  transition: color .15s;
+}
+.footer-link:hover { color: #3e97b5; }
