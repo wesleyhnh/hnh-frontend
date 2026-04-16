@@ -198,9 +198,3 @@
 @include('partials.contact-form', ['title' => 'Schedule A Demo', 'subtitle' => 'Want to learn more? Schedule a demo today!'])
 
 @endsection
-
-@section('scripts')
-@if(config('services.recaptcha.site_key'))
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-@endif
-@endsection

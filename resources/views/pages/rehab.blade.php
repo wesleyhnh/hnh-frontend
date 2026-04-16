@@ -4,7 +4,38 @@
 
 @section('content')
 
-@include('partials.contact-form', ['subtitle' => ''])
+@if($page->show_hero)
+<section id="breadcrumbs-hero" style="background:url('{{ asset('images/hero-background.jpg') }}') center/cover no-repeat fixed;min-height:50vh;display:flex;align-items:center;padding-top:20px;padding-bottom:40px;margin-top:60px;">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-5">
+        <div class="hero-txt" style="text-align:center;">
+          <h2 style="color:#024f7c;font-family:'Nunito',sans-serif;font-weight:700;font-size:2.5rem;margin-bottom:1.5rem;line-height:1.2;">{{ $page->hero_title }}</h2>
+          <p style="color:#3e97b5;font-size:1rem;line-height:1.6;margin-bottom:1rem;">{{ $page->hero_subtitle }}</p>
+          
+          <div class="hero-badge mt-3" style="margin-bottom:1rem;">
+            <a href="https://app.drata.com/security-report/4f420f38-b5d7-45f6-80c7-7f918eed280d/bbd6ae71-4b61-43ed-a2e4-ff901c895a00" target="_blank" rel="noopener">
+              <img src="{{ asset('images/hipaa-badge.png') }}" alt="HIPAA SOC-2 ISO-27001" style="max-width:200px;height:auto;">
+            </a>
+          </div>
+          
+          <p style="margin-top:14px;">
+            <a href="https://app.drata.com/security-report/4f420f38-b5d7-45f6-80c7-7f918eed280d/bbd6ae71-4b61-43ed-a2e4-ff901c895a00" target="_blank" rel="noopener" class="view-report" style="color:#3e97b5;text-decoration:none;font-size:0.95rem;">
+              View daily compliance report
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-1 d-none d-md-block"></div>
+
+      <div class="col-md-6 hero-device mt-4 mt-md-0" style="text-align:center;">
+        <img src="{{ asset('images/home-screen-gray.png') }}" alt="Healthcare Platform - Computer and Mobile Device Display" style="max-width:100%;height:auto;">
+      </div>
+    </div>
+  </div>
+</section>
+@endif
 
 <section style="background:#1a2d3a;padding:60px 0;">
   <div class="container">
