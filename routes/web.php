@@ -28,3 +28,9 @@ Route::get('/mental-health-news', [PagesController::class, 'news'])           ->
 Route::get('/peer-counseling',    [PagesController::class, 'peerCounseling']) ->name('peer-counseling');
 Route::get('/helpful-links',      [PagesController::class, 'helpfulLinks'])   ->name('helpful-links');
 Route::get('/support',            [PagesController::class, 'support'])        ->name('support');
+
+// ── Catch-all for admin-created static pages ──────────────────────────────────
+// Must remain last — catches any slug not matched above
+Route::get('/{slug}', [PagesController::class, 'catchAll'])
+    ->where('slug', '[a-z0-9_-]+')
+    ->name('page.dynamic');

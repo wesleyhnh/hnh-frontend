@@ -83,10 +83,10 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Customer Portal</a>
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Portals</a>
                         <div class="dropdown-menu">
-                            {{-- Production login stays on the live portal --}}
-                            <a class="dropdown-item" href="https://production.herenowhelp.com/login" target="_blank" rel="noopener">Login</a>
+                            <a class="dropdown-item" href="https://production.herenowhelp.com/login" target="_blank" rel="noopener">Admin Mobile Portal Login</a>
+                            <a class="dropdown-item" href="{{ url('/admin') }}">HNH Website Portal Login</a>
                         </div>
                     </li>
 
