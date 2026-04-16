@@ -16,6 +16,7 @@ class Page extends Model
         'show_hero',
         'hero_title',
         'hero_subtitle',
+        'video_url',
         'show_body',
         'body',
         'show_cta',

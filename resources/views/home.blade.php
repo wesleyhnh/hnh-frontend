@@ -14,7 +14,7 @@
 
             {{-- Left: text + badges --}}
             <div class="col-md-5">
-                <div class="hero-txt">
+                <div class="hero-txt" style="text-align: center;">
                     <h2>Intelligent<br>Mental Health Platform</h2>
 
                     <p>The most holistic &amp; personalized platform for total mental health treatment.<br>
@@ -195,7 +195,7 @@
 {{-- ══════════════════════════════════════════════════════════════════════
      FEATURES — WHAT MAKES HERENOW HELP DIFFERENT?
 ══════════════════════════════════════════════════════════════════════ --}}
-<section class="features-section">
+<section class="features-section" style="background-image:linear-gradient(rgba(30,40,50,.45), rgba(30,40,50,.45)),url('{{ asset('images/bg-graph.jpg') }}');background-position:bottom center;background-size:cover;background-repeat:no-repeat;background-attachment:fixed;">
     <div class="container">
 
         <h3 class="section-head">What Makes HereNOW Help Different?</h3>
@@ -233,70 +233,14 @@
 
 
 {{-- ══════════════════════════════════════════════════════════════════════
-     SCHEDULE A DEMO
+     SCHEDULE A DEMO (Partial)
 ══════════════════════════════════════════════════════════════════════ --}}
-<section class="contact-section" id="Contact">
-    <div class="container">
+@include('partials.contact-form')
 
-        <h3 class="section-head">Schedule A Demo</h3>
-        <p class="section-sub">Increase Intakes, Engagement, Reimbursement...and More!</p>
+@endsection
 
-        <div class="contact-form-wrap">
-
-            @if(session('success'))
-                <div class="alert-success-box">{{ session('success') }}</div>
-            @endif
-
-            <form action="{{ route('contact') }}" method="POST" class="contact-form">
-                @csrf
-
-                <div class="row">
-                    <div class="col-lg-6">
-                        <input type="text" name="your-name" class="form-control"
-                               placeholder="Your Name" value="{{ old('your-name') }}" required maxlength="400">
-                        @error('your-name')
-                            <div class="text-danger small mb-2">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="col-lg-6">
-                        <input type="email" name="your-email" class="form-control"
-                               placeholder="Email Address" value="{{ old('your-email') }}" required maxlength="400">
-                        @error('your-email')
-                            <div class="text-danger small mb-2">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <select name="your-subject" class="form-control {{ old('your-subject') ? 'filled' : '' }}">
-                            <option value="" disabled {{ old('your-subject') ? '' : 'selected' }}>I'm Interested As...</option>
-                            <option value="Rehab Center/s"          {{ old('your-subject')=='Rehab Center/s' ? 'selected' : '' }}>Rehab Center/s</option>
-                            <option value="State & Local Government"{{ old('your-subject')=='State & Local Government' ? 'selected' : '' }}>State &amp; Local Government</option>
-                            <option value="Hospital"                {{ old('your-subject')=='Hospital' ? 'selected' : '' }}>Hospital</option>
-                            <option value="Insurance Provider"      {{ old('your-subject')=='Insurance Provider' ? 'selected' : '' }}>Insurance Provider</option>
-                            <option value="Potential Partner"       {{ old('your-subject')=='Potential Partner' ? 'selected' : '' }}>Potential Partner</option>
-                            <option value="Press"                   {{ old('your-subject')=='Press' ? 'selected' : '' }}>Press</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row mt-1">
-                    <div class="col-12">
-                        <textarea name="your-message" class="form-control"
-                                  placeholder="Your Message" maxlength="2000">{{ old('your-message') }}</textarea>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <button type="submit" class="btn-send">Send Message</button>
-                    </div>
-                </div>
-            </form>
-
-        </div>
-    </div>
-</section>
-
+@section('scripts')
+@if(config('services.recaptcha.site_key'))
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@endif
 @endsection
