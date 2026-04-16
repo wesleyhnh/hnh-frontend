@@ -31,8 +31,7 @@ composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate
-npm install
-npm run build
+
 ```
 
 **3. Configure your environment:**
@@ -41,35 +40,17 @@ Open `.env` and update the database connection and any other settings for your e
 
 ## Development
 
-Start all dev processes (server, queue, log watcher, and Vite HMR) concurrently:
 
 ```bash
-composer run dev
+php artisan serve
 ```
-
-This runs:
-- `php artisan serve` — local dev server at `http://localhost:8000`
-- `php artisan queue:listen` — queue worker
-- `php artisan pail` — log viewer
-- `npm run dev` — Vite with hot module replacement
 
 ## Testing
-
-```bash
-composer run test
-```
-
-Or directly:
 
 ```bash
 php artisan test
 ```
 
-## Building Assets
-
-```bash
-npm run build
-```
 
 ## Key Technologies
 

@@ -407,7 +407,7 @@ img { max-width: 100%; height: auto; display: inline-block; }
 .contact-form .form-control {
   border: 1px solid #c9dde5;
   border-radius: 6px;
-  padding: .72rem 1rem;
+  /* padding: .72rem 1rem; */
   font-size: .95rem;
   color: #333;
   background: #fff;
